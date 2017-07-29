@@ -26,7 +26,12 @@
         +   `nginx.conf`
             ```bash
             # vim /opt/openresty/nginx/conf/nginx.conf
+            error_log  logs/error.log;
             
+            pid        logs/nginx.pid;
+            
+            load_module "/opt/openresty/nginx/modules/ngx_http_ts_module.so"; # 加载模块
+
             events {
             }
             
