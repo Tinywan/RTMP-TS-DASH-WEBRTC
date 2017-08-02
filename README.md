@@ -6,6 +6,7 @@
 +   服务与模块
     +   1、Openresty下载 `https://openresty.org/download/openresty-1.11.2.3.tar.gz`   
     +   2、nginx-ts-module下载 `git clone https://github.com/arut/nginx-ts-module.git`
+    +   3、ffmpeg 下载安装
 +   动态编译安装
     +   1、Openresty环境配置
         ```bash
@@ -91,6 +92,11 @@
             <video data-dashjs-player autoplay src="http://1127.0.0.1:8000/play/dash/sintel/index.mpd" controls></video>
         </div>
         ```
-    +   6、总结，一切顺利通过。    
+    +   6、如果不使用 ffmpeg 直接拉流到`http://127.0.0.1:8000/publish/sintel` 服务的解决方案？ 
+        +   （1）nginx-rtmp-module下载 `git clone https://github.com/arut/nginx-rtmp-module.git`
+        +   （2）和安装`nginx-ts-module`模块一样动态编译安装既可以，最后别忘记了的在配置文件load `nginx-rtmp-module.so`文件
+        +   （3）按照这个顺序：`OBS => nginx-rtmp => nginx-ts`推流，OBS也可以是别的网络推流设备
+        +   （4）通过以上我们可以不直接使用ffmpeg 去推流了，而是在Windows端口可以通过OBS很简单的去推流了
+    +   7、总结，一切顺利通过。    
         
         
