@@ -97,6 +97,7 @@
         +   （2）和安装`nginx-ts-module`模块一样动态编译安装既可以，最后别忘记了的在配置文件load `nginx-rtmp-module.so`文件
         +   （3）按照这个顺序：`OBS => nginx-rtmp => nginx-ts`推流，OBS也可以是别的网络推流设备
         +   （4）通过以上我们可以不直接使用ffmpeg 去推流了，而是在Windows端口可以通过OBS很简单的去推流了
+        +   （5）待测试...
     +   7、总结，一切顺利通过。    
         
         
