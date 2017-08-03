@@ -1,6 +1,7 @@
 # NGINX MPEG-TS Live Module & Dash JS
 ## 目录
 +   环境搭建   
++   NGINX-RTMP-TS-DASH 直播方案   
 +   HTML5 标准
 ## 环境搭建
 +   服务与模块
@@ -100,4 +101,126 @@
         +   （5）待测试...
     +   7、总结，一切顺利通过。    
         
-        
+##  NGINX-RTMP-TS-DASH 直播方案
++   编译安装
+    +   1、下载nginx-rtmp-module模块：`git clone https://github.com/arut/nginx-rtmp-module.git`
+    +   2、通过configure命令生成Makefile文件，为下一步的编译做准备：
+        ```javascript
+        ./configure --prefix=/opt/openresty --with-luajit --without-http_redis2_module --with-http_iconv_module \ 
+        --with-http_stub_status_module --with-http_xslt_module --add-dynamic-module=/root/nginx-ts-module \
+        --add-dynamic-module=/root/nginx-rtmp-module
+        ```
++   `nginx.conf` 配置信息
+    ```bash
+    # vim /opt/openresty/nginx/conf/nginx.conf
+    user  www;
+    worker_processes  1;
+    
+    error_log  logs/error.log;
+    
+    pid        logs/nginx.pid;
+    
+    load_module "/opt/openresty/nginx/modules/ngx_http_ts_module.so";
+    load_module "/opt/openresty/nginx/modules/ngx_rtmp_module.so";
+    
+    events {
+        worker_connections  1024;
+    }
+     
+     http {
+         server {
+             listen 8000;
+     
+             # This URL provides RTMP statistics in XML
+             location /stat {
+                 rtmp_stat all;
+                 rtmp_stat_stylesheet stat.xsl;
+             }
+     
+             location /stat.xsl {
+                root html;
+             }
+     
+             location /hls {
+                 # Serve HLS fragments
+                add_header Cache-Control no-cache;
+                add_header 'Access-Control-Allow-Origin' '*' always;
+                add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+                add_header 'Access-Control-Allow-Headers' 'Range';
+            
+                types {
+                    application/vnd.apple.mpegurl m3u8;
+                    video/mp2t ts;
+                }
+            
+                root /tmp;
+             }
+    
+             location /dash {
+                 # Serve DASH fragments
+                 add_header Cache-Control no-cache;
+                 add_header 'Access-Control-Allow-Origin' '*' always;
+                 add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+                 add_header 'Access-Control-Allow-Headers' 'Range';
+     
+                 types {
+                     application/dash+xml mpd;
+                     video/mp4 mp4;
+                 }
+
+                 root /tmp;
+             }
+         }
+     }
+    
+     rtmp {
+         listen 1935;
+         chunk_size 4000;
+         idle_streams off;
+         ping 30s;
+         notify_method get;
+
+         server {
+             listen 1935;
+             chunk_size 4000;
+     
+             drop_idle_publisher 10s;
+             idle_streams off;
+            
+             application live {
+                 live on;
+             }
+     
+             application hls {
+                 live on;
+                 hls on;
+                 hls_path /tmp/hls;
+             }
+     
+             # MPEG-DASH is similar to HLS
+             application dash {
+                 live on;
+                 dash on;
+                 dash_path /tmp/dash;
+             }
+         }
+     }
+    ```
++   复制xml文件：`cp /root/nginx-rtmp-module/stat.xsl /opt/openresty/nginx/html`    
++   流状态查看：`http://127.0.0.1:8000/stat`    
++   OBS推流地址：`rtmp://115.29.8.55/dash/123`    
++   VLC观看RTMP直播流：`rtmp://127.0.0.1/dash/123`    
++   DASH格式HTTP播放
+    ```html
+    <script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <style>
+        video {
+            width: 640px;
+            height: 360px;
+        }
+    </style>
+    <div>
+        <video data-dashjs-player autoplay src="http://127.0.0.1:8000/dash/123.mpd" controls></video>
+    </div>
+    ```
++   测试结束    
