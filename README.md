@@ -138,8 +138,8 @@
      
              # This URL provides RTMP statistics in XML
              location /stat {
-                 rtmp_stat all;
-                 rtmp_stat_stylesheet stat.xsl;
+                rtmp_stat all;
+                rtmp_stat_stylesheet stat.xsl;
              }
      
              location /stat.xsl {
@@ -211,9 +211,9 @@
          }
      }
     ```
-+   复制xml文件：`cp /root/nginx-rtmp-module/stat.xsl /opt/openresty/nginx/html`    
++   拷贝xml文件：`cp /root/nginx-rtmp-module/stat.xsl /opt/openresty/nginx/html`    
 +   流状态查看：`http://127.0.0.1:8000/stat`    
-+   OBS推流地址：`rtmp://115.29.8.55/dash/123`    
++   OBS推流地址：`rtmp://127.0.0.1/dash/123`    
 +   VLC观看RTMP直播流：`rtmp://127.0.0.1/dash/123`    
 +   DASH格式HTTP播放
     ```html
