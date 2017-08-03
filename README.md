@@ -104,7 +104,12 @@
 ##  NGINX-RTMP-TS-DASH 直播方案
 +   编译安装
     +   1、下载nginx-rtmp-module模块：`git clone https://github.com/arut/nginx-rtmp-module.git`
-    +   2、通过configure命令生成Makefile文件，为下一步的编译做准备：
+    +   2、配置 --with-http_xslt_module 时提示 the HTTP XSLT module requires the libxml2/libxslt libraries，安装以下：
+        ```javascript
+        sudo apt-get install libxml2 libxml2-dev libxslt-dev
+        sudo apt-get install libgd2-xpm libgd2-xpm-dev
+        ```
+    +   3、通过configure命令生成Makefile文件，为下一步的编译做准备：
         ```javascript
         ./configure --prefix=/opt/openresty --with-luajit --without-http_redis2_module --with-http_iconv_module \ 
         --with-http_stub_status_module --with-http_xslt_module --add-dynamic-module=/root/nginx-ts-module \
