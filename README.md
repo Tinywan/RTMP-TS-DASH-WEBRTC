@@ -87,16 +87,18 @@
         
     +   5、客户端播放
     
-            <script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
-            <style>
-                video {
-                    width: 640px;
-                    height: 360px;
-                }
-            </style>
-            <div>
-                <video data-dashjs-player autoplay src="http://1127.0.0.1:8000/play/dash/sintel/index.mpd" controls></video>
-            </div>
+        ```html
+        <script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
+        <style>
+            video {
+                width: 640px;
+                height: 360px;
+            }
+        </style>
+        <div>
+            <video data-dashjs-player autoplay src="http://1127.0.0.1:8000/play/dash/sintel/index.mpd" controls></video>
+        </div>
+        ```
         
     +   6、如果不使用 ffmpeg 直接拉流到`http://127.0.0.1:8000/publish/sintel` 服务的解决方案？ 
         +   （1）nginx-rtmp-module下载 `git clone https://github.com/arut/nginx-rtmp-module.git`
@@ -222,15 +224,17 @@
 +   VLC观看RTMP直播流：`rtmp://127.0.0.1/dash/123`    
 +   DASH格式HTTP播放
 
-        <script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
-        <style>
-            video {
-                width: 640px;
-                height: 360px;
-            }
-        </style>
-        <div>
-            <video data-dashjs-player autoplay src="http://127.0.0.1:8000/dash/123.mpd" controls></video>
-        </div>
+```html
+<script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
+<style>
+    video {
+        width: 640px;
+        height: 360px;
+    }
+</style>
+<div>
+    <video data-dashjs-player autoplay src="http://127.0.0.1:8000/dash/123.mpd" controls></video>
+</div>
+```
     
 +   测试结束    
