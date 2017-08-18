@@ -96,12 +96,16 @@
             }
         </style>
         <div>
-            <video data-dashjs-player autoplay src="http://1127.0.0.1:8000/play/dash/sintel/index.mpd" controls></video>
+            <video data-dashjs-player autoplay src="http://1127.0.0.1:8000/play/dash/sintel/index.mpd" 
+                controls></video>
         </div>
         ```
         
     +   6、如果不使用 ffmpeg 直接拉流到`http://127.0.0.1:8000/publish/sintel` 服务的解决方案？ 
-        +   （1）nginx-rtmp-module下载 `git clone https://github.com/arut/nginx-rtmp-module.git`
+        +   （1）nginx-rtmp-module下载 
+            
+            git clone https://github.com/arut/nginx-rtmp-module.git
+            
         +   （2）和安装`nginx-ts-module`模块一样动态编译安装既可以，最后别忘记了的在配置文件load `nginx-rtmp-module.so`文件
         +   （3）按照这个顺序：`OBS => nginx-rtmp => nginx-ts`推流，OBS也可以是别的网络推流设备
         +   （4）通过以上我们可以不直接使用ffmpeg 去推流了，而是在Windows端口可以通过OBS很简单的去推流了
@@ -110,7 +114,10 @@
         
 ##  NGINX-RTMP-TS-DASH 直播方案
 +   编译安装
-    +   1、下载nginx-rtmp-module模块：`git clone https://github.com/arut/nginx-rtmp-module.git`
+    +   1、下载nginx-rtmp-module模块：
+    
+        git clone https://github.com/arut/nginx-rtmp-module.git
+        
     +   2、配置 --with-http_xslt_module 时提示 the HTTP XSLT module requires the libxml2/libxslt libraries，安装以下：
             
             sudo apt-get install libxml2 libxml2-dev libxslt-dev
@@ -124,99 +131,101 @@
             
 +   `nginx.conf` 配置信息
 
-        # vim /opt/openresty/nginx/conf/nginx.conf
-        user  www;
-        worker_processes  1;
-        
-        error_log  logs/error.log;
-        
-        pid        logs/nginx.pid;
-        
-        load_module "/opt/openresty/nginx/modules/ngx_http_ts_module.so";
-        load_module "/opt/openresty/nginx/modules/ngx_rtmp_module.so";
-        
-        events {
-            worker_connections  1024;
-        }
-         
-         http {
-             server {
-                 listen 8000;
-         
-                 # This URL provides RTMP statistics in XML
-                 location /stat {
-                    rtmp_stat all;
-                    rtmp_stat_stylesheet stat.xsl;
-                 }
-         
-                 location /stat.xsl {
-                    root html;
-                 }
-         
-                 location /hls {
-                     # Serve HLS fragments
-                    add_header Cache-Control no-cache;
-                    add_header 'Access-Control-Allow-Origin' '*' always;
-                    add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
-                    add_header 'Access-Control-Allow-Headers' 'Range';
-                
-                    types {
-                        application/vnd.apple.mpegurl m3u8;
-                        video/mp2t ts;
-                    }
-                
-                    root /tmp;
-                 }
-        
-                 location /dash {
-                     # Serve DASH fragments
-                     add_header Cache-Control no-cache;
-                     add_header 'Access-Control-Allow-Origin' '*' always;
-                     add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
-                     add_header 'Access-Control-Allow-Headers' 'Range';
-         
-                     types {
-                         application/dash+xml mpd;
-                         video/mp4 mp4;
-                     }
+    ```bash
+    # vim /opt/openresty/nginx/conf/nginx.conf
+    user  www;
+    worker_processes  1;
     
-                     root /tmp;
+    error_log  logs/error.log;
+    
+    pid        logs/nginx.pid;
+    
+    load_module "/opt/openresty/nginx/modules/ngx_http_ts_module.so";
+    load_module "/opt/openresty/nginx/modules/ngx_rtmp_module.so";
+    
+    events {
+        worker_connections  1024;
+    }
+     
+     http {
+         server {
+             listen 8000;
+     
+             # This URL provides RTMP statistics in XML
+             location /stat {
+                rtmp_stat all;
+                rtmp_stat_stylesheet stat.xsl;
+             }
+     
+             location /stat.xsl {
+                root html;
+             }
+     
+             location /hls {
+                 # Serve HLS fragments
+                add_header Cache-Control no-cache;
+                add_header 'Access-Control-Allow-Origin' '*' always;
+                add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+                add_header 'Access-Control-Allow-Headers' 'Range';
+            
+                types {
+                    application/vnd.apple.mpegurl m3u8;
+                    video/mp2t ts;
+                }
+            
+                root /tmp;
+             }
+    
+             location /dash {
+                 # Serve DASH fragments
+                 add_header Cache-Control no-cache;
+                 add_header 'Access-Control-Allow-Origin' '*' always;
+                 add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+                 add_header 'Access-Control-Allow-Headers' 'Range';
+     
+                 types {
+                     application/dash+xml mpd;
+                     video/mp4 mp4;
                  }
+    
+                 root /tmp;
              }
          }
-        
-         rtmp {
+     }
+    
+     rtmp {
+         listen 1935;
+         chunk_size 4000;
+         idle_streams off;
+         ping 30s;
+         notify_method get;
+    
+         server {
              listen 1935;
              chunk_size 4000;
+     
+             drop_idle_publisher 10s;
              idle_streams off;
-             ping 30s;
-             notify_method get;
-    
-             server {
-                 listen 1935;
-                 chunk_size 4000;
-         
-                 drop_idle_publisher 10s;
-                 idle_streams off;
-                
-                 application live {
-                     live on;
-                 }
-         
-                 application hls {
-                     live on;
-                     hls on;
-                     hls_path /tmp/hls;
-                 }
-         
-                 # MPEG-DASH is similar to HLS
-                 application dash {
-                     live on;
-                     dash on;
-                     dash_path /tmp/dash;
-                 }
+            
+             application live {
+                 live on;
+             }
+     
+             application hls {
+                 live on;
+                 hls on;
+                 hls_path /tmp/hls;
+             }
+     
+             # MPEG-DASH is similar to HLS
+             application dash {
+                 live on;
+                 dash on;
+                 dash_path /tmp/dash;
              }
          }
+     }
+    ```
      
 +   拷贝xml文件：`cp /root/nginx-rtmp-module/stat.xsl /opt/openresty/nginx/html`    
 +   流状态查看：`http://127.0.0.1:8000/stat`    
@@ -224,17 +233,17 @@
 +   VLC观看RTMP直播流：`rtmp://127.0.0.1/dash/123`    
 +   DASH格式HTTP播放
 
-```html
-<script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
-<style>
-    video {
-        width: 640px;
-        height: 360px;
-    }
-</style>
-<div>
-    <video data-dashjs-player autoplay src="http://127.0.0.1:8000/dash/123.mpd" controls></video>
-</div>
-```
+    ```html
+    <script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <style>
+        video {
+            width: 640px;
+            height: 360px;
+        }
+    </style>
+    <div>
+        <video data-dashjs-player autoplay src="http://127.0.0.1:8000/dash/123.mpd" controls></video>
+    </div>
+    ```
     
 +   测试结束    
