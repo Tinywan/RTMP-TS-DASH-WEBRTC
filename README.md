@@ -129,12 +129,17 @@
             --with-http_stub_status_module --with-http_xslt_module --add-dynamic-module=/root/nginx-ts-module \
             --add-dynamic-module=/root/nginx-rtmp-module
             
-如果报下面的错误
+    +   4、如果报下面的错误
 
-platform: linux (linux)
-    you need to have ldconfig in your PATH env when enabling luajit.
-是因为找不到命令ldconfig, 这个命令一般是在/sbin/目录下的，所以先执行
-
+            platform: linux (linux)
+                you need to have ldconfig in your PATH env when enabling luajit.
+         > 是因为找不到命令ldconfig, 这个命令一般是在/sbin/目录下的，所以先执行
+         
+            export PATH=$PATH:/sbin
+    +   5、如果出现：`./configure: error: the HTTP XSLT module requires the libxml2/libxslt` 错误，安装以下：
+    
+            sudo apt-get install libxml2 libxml2-dev libxslt-dev
+            
 export PATH=$PATH:/sbin
 
         
