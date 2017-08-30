@@ -129,6 +129,15 @@
             --with-http_stub_status_module --with-http_xslt_module --add-dynamic-module=/root/nginx-ts-module \
             --add-dynamic-module=/root/nginx-rtmp-module
             
+如果报下面的错误
+
+platform: linux (linux)
+    you need to have ldconfig in your PATH env when enabling luajit.
+是因为找不到命令ldconfig, 这个命令一般是在/sbin/目录下的，所以先执行
+
+export PATH=$PATH:/sbin
+
+        
 +   `nginx.conf` 配置信息
 
     ```bash
