@@ -13,13 +13,23 @@
     +   UDT 用于听，拉和集合模式
     +   HLS 为拉流
     
-+   实时消息传递协议1（RTMP）
++   单路路实时编码流传递（RTMP）
 
 ![Markdown](./image/live_streaming_big.png)
 
-+   实时消息传递协议2（RTMP）
++   多路实时编码流传递（RTMP）
 
 ![Markdown](./image/rtmp-republishing_big.png)
+
+
++   通过SSL加密和公开HLS媒体的来源（HLS）
+
+![Markdown](./image/http_restreaming_big.png)
+
+
++   HLS、MPEG-DASH多路输入/输出流（HLS、MPEG-DASH）
+
+![Markdown](./image/rtmp-republishing-hls-dash_big.png)
 
 ## 环境搭建
 +   服务与模块
