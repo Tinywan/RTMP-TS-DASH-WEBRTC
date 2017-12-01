@@ -3,6 +3,7 @@
 +   环境搭建   
 +   NGINX-RTMP-TS-DASH 直播方案   
 +   HTML5 标准
+
 ##  流媒体直播功能
 +   支持的直播流输入协议是
     +   RTMP 用于拉取和发布的流
@@ -11,10 +12,15 @@
     +   SRT 用于听，拉和集合模式
     +   UDT 用于听，拉和集合模式
     +   HLS 为拉流
+    
 +   实时消息传递协议1（RTMP）
+
 ![Markdown](./image/live_streaming_big.png)
+
 +   实时消息传递协议2（RTMP）
+
 ![Markdown](./image/rtmp-republishing_big.png)
+
 ## 环境搭建
 +   服务与模块
     +   1、Openresty下载 
