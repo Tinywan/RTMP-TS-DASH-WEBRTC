@@ -21,16 +21,6 @@
 
 ![Markdown](./image/rtmp-republishing_big.png)
 
-
-+   通过SSL加密和公开HLS媒体的来源（HLS）
-
-![Markdown](./image/http_restreaming_big.png)
-
-
-+   HLS、MPEG-DASH多路输入/输出流（HLS、MPEG-DASH）
-
-![Markdown](./image/rtmp-republishing-hls-dash_big.png)
-
 ## 环境搭建
 +   服务与模块
     +   1、Openresty下载 
@@ -138,9 +128,16 @@
         +   （3）按照这个顺序：`OBS => nginx-rtmp => nginx-ts`推流，OBS也可以是别的网络推流设备
         +   （4）通过以上我们可以不直接使用ffmpeg 去推流了，而是在Windows端口可以通过OBS很简单的去推流了
         +   （5）待测试...
-    +   7、总结，一切顺利通过。    
-        
+    +   7、总结，一切顺利通过。   
+     
++   通过SSL加密和公开HLS媒体的来源（HLS）
+
+![Markdown](./image/http_restreaming_big.png)        
 ##  NGINX-RTMP-TS-DASH 直播方案
++   HLS、MPEG-DASH多路输入/输出流（HLS、MPEG-DASH）
+
+![Markdown](./image/rtmp-republishing-hls-dash_big.png)
+
 +   编译安装
     +   1、下载nginx-rtmp-module模块：
     
