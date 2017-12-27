@@ -14,12 +14,12 @@
 * WebRTC 标准  
 * 参考资料  
 
-##  直播流程
+###  直播流程
 
 + 视频直播：采集、前处理、编码、传输、解码、渲染    
 
 + 采集： 一般是由客户端（IOS、安卓、PC或其它工具，如OBS）完成的，iOS是比较简单的，Android则要做些机型适配工作，PC最麻烦各种奇葩摄像头驱动。 
- 
+
 + 前期处理： 主要是处理直播美颜，美颜算法需要用到GPU编程，需要懂图像处理算法的人，没有好的开源实现，要自己参考论文去研究。难点不在于美颜效果，而在于GPU占用和美颜效果之间找平衡。  
 
 + 编码： 要采用硬编码，软编码720p完全没希望，勉强能编码也会导致CPU过热烫到摄像头。编码要在分辨率，帧率，码率，GOP等参数设计上找到最佳平衡点。  
@@ -34,8 +34,10 @@
 
   ![Markdown](./image/tenent-live-soluet.png)
 
-##  流媒体直播功能
+###  流媒体直播功能
+
 +   支持的直播流输入协议是
+
     +   RTMP 用于拉取和发布的流
     +   RTSP 为拉和宣布的流
     +   用于HTTP和UDP流的 MPEG-TS
@@ -51,87 +53,99 @@
 
 ![Markdown](./image/rtmp-republishing_big.png)
 
-## 环境搭建
+### 环境搭建
 +   服务与模块
     +   1、Openresty下载 
 
-            https://openresty.org/download/openresty-1.11.2.3.tar.gz
-
+        ```bash
+        https://openresty.org/download/openresty-1.11.2.3.tar.gz
+        ```
     +   2、nginx-ts-module下载 
 
-            git clone https://github.com/arut/nginx-ts-module.git
+        ```bash
+        git clone https://github.com/arut/nginx-ts-module.git
+        ```          
 
     +   3、ffmpeg 下载安装
+    
 +   动态编译安装
+
     +   1、Openresty环境配置
-
-            apt-get install libreadline-dev libncurses5-dev libpcre3-dev \
-            libssl-dev perl make build-essential
-
+    
+        ```bash
+        apt-get install libreadline-dev libncurses5-dev libpcre3-dev \
+        libssl-dev perl make build-essential
+        ```
     +   2、动态编译安装
 
-            ./configure --prefix=/opt/openresty --with-luajit --without-http_redis2_module \
-            --with-http_iconv_module --add-dynamic-module=/root/nginx-ts-module
-            ...
-            make -j4
-            ...
-            sudo make install
+        ```bash
+        ./configure --prefix=/opt/openresty --with-luajit --without-http_redis2_module \
+        --with-http_iconv_module --add-dynamic-module=/root/nginx-ts-module
+        ...
+        make -j4
+        ...
+        sudo make install
+        ```
 
     +   3、配置文件
         +   `nginx.conf`
 
-                # vim /opt/openresty/nginx/conf/nginx.conf
-                error_log  logs/error.log;
-                
-                pid        logs/nginx.pid;
-                
-                load_module "/opt/openresty/nginx/modules/ngx_http_ts_module.so"; # 加载模块
-              
-                events {
-                }
-                
-                http {
-                    server {
-                        listen 8000;
-                
-                        location / {
-                            root html;
+            ```bash
+            # vim /opt/openresty/nginx/conf/nginx.conf
+            error_log  logs/error.log;
+            
+            pid        logs/nginx.pid;
+            
+            load_module "/opt/openresty/nginx/modules/ngx_http_ts_module.so"; # 加载模块
+            
+            events {
+            }
+            
+            http {
+                server {
+                    listen 8000;
+            
+                    location / {
+                        root html;
+                    }
+            
+                    location /publish/ {
+                        ts;
+                        ts_hls path=/var/media/hls segment=10s;
+                        ts_dash path=/var/media/dash segment=10s;
+            
+                        client_max_body_size 0;
+                    }
+            
+                    location /play/ {
+                        add_header Cache-Control no-cache;
+                        add_header 'Access-Control-Allow-Origin' '*' always;
+                        add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+                        add_header 'Access-Control-Allow-Headers' 'Range';
+            
+                        types {
+                            application/x-mpegURL m3u8;
+                            application/dash+xml mpd;
+                            video/MP2T ts;
+                            video/mp4 mp4;
                         }
-                
-                        location /publish/ {
-                            ts;
-                            ts_hls path=/var/media/hls segment=10s;
-                            ts_dash path=/var/media/dash segment=10s;
-                
-                            client_max_body_size 0;
-                        }
-                
-                        location /play/ {
-                            add_header Cache-Control no-cache;
-                            add_header 'Access-Control-Allow-Origin' '*' always;
-                            add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
-                            add_header 'Access-Control-Allow-Headers' 'Range';
-                
-                            types {
-                                application/x-mpegURL m3u8;
-                                application/dash+xml mpd;
-                                video/MP2T ts;
-                                video/mp4 mp4;
-                            }
-                            alias /var/media/;
-                        }
+                        alias /var/media/;
                     }
                 }
-
+            }
+            ```
         +   流媒体存放文件夹建立
-
-                cd /var & makedir media
-                cd media & makedir hls & makedir dash
-
+        
+			```bash
+            cd /var & makedir media
+            cd media & makedir hls & makedir dash
+			```
     +   4、FFmpeg推流
-
-            ffmpeg -re -i rtmp://live.hkstv.hk.lxdns.com/live/hks -bsf:v h264_mp4toannexb \
-            -c copy -f mpegts http://127.0.0.1:8000/publish/sintel
+				
+        ```bash
+        ffmpeg -re -i rtmp://live.hkstv.hk.lxdns.com/live/hks -bsf:v h264_mp4toannexb \
+        -c copy -f mpegts http://127.0.0.1:8000/publish/sintel
+        ```
 
     +   5、客户端播放
 
@@ -164,7 +178,8 @@
 
   ![Markdown](./image/http_restreaming_big.png)     
 
-##  NGINX-RTMP-TS-DASH 直播方案
+###  NGINX-RTMP-TS-DASH 直播方案
+
 +   HLS、MPEG-DASH多路输入/输出流（HLS、MPEG-DASH）
 
 ![Markdown](./image/rtmp-republishing-hls-dash_big.png)
@@ -172,30 +187,35 @@
 +   编译安装
     +   1、下载nginx-rtmp-module模块：
 
+        ```bash
         git clone https://github.com/arut/nginx-rtmp-module.git
-
+        ```
     +   2、配置 --with-http_xslt_module 时提示 the HTTP XSLT module requires the libxml2/libxslt libraries，安装以下：
       ​      
-            sudo apt-get install libxml2 libxml2-dev libxslt-dev
-            sudo apt-get install libgd2-xpm libgd2-xpm-dev
-
+        ```bash
+        sudo apt-get install libxml2 libxml2-dev libxslt-dev
+        sudo apt-get install libgd2-xpm libgd2-xpm-dev
+        ```
     +   3、通过configure命令生成Makefile文件，为下一步的编译做准备：
 
-            ./configure --prefix=/opt/openresty --with-luajit --without-http_redis2_module --with-http_iconv_module \ 
-            --with-http_stub_status_module --with-http_xslt_module --add-dynamic-module=/root/nginx-ts-module \
-            --add-dynamic-module=/root/nginx-rtmp-module
-
+        ```bash
+        ./configure --prefix=/opt/openresty --with-luajit --without-http_redis2_module --with-http_iconv_module \ 
+        --with-http_stub_status_module --with-http_xslt_module --add-dynamic-module=/root/nginx-ts-module \
+        --add-dynamic-module=/root/nginx-rtmp-module
+        ```
     +   4、如果报下面的错误
 
-            platform: linux (linux)
-                you need to have ldconfig in your PATH env when enabling luajit.
-         > 是因为找不到命令ldconfig, 这个命令一般是在/sbin/目录下的，所以先执行
-
-            export PATH=$PATH:/sbin
+        ```bash
+        platform: linux (linux)
+            you need to have ldconfig in your PATH env when enabling luajit.
+        ```
+         > 是因为找不到命令ldconfig, 这个命令一般是在/sbin/目录下的，所以先执行`export PATH=$PATH:/sbin`
+            
     +   5、如果出现：`./configure: error: the HTTP XSLT module requires the libxml2/libxslt` 错误，安装以下：
-
-            sudo apt-get install libxml2 libxml2-dev libxslt-dev
-      +6、执行：`export PATH=$PATH:/sbin`    
+    
+        ```bash
+        sudo apt-get install libxml2 libxml2-dev libxslt-dev
+        ```
 
 +   `nginx.conf` 配置
 
