@@ -340,7 +340,7 @@
 
 ## 参考资料
 + [FFmpeg功能命令集合](https://www.jianshu.com/p/053665062f22)
-+ [ffmpeg处理RTMP流媒体的命令大全(http://blog.csdn.net/leixiaohua1020/article/details/12029543)
++ [ffmpeg处理RTMP流媒体的命令大全](http://blog.csdn.net/leixiaohua1020/article/details/12029543)
 + [FFmpeg常用推流命令](https://www.jianshu.com/p/d541b317f71c)
 + [HTTP Live Streaming (HLS) - 概念](https://www.jianshu.com/p/2ce402a485ca)
 + [HLS-iOS视频播放服务架构深入探究（一）](https://yangchao0033.github.io/blog/2016/01/29/hls-1/)
