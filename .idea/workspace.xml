@@ -43,8 +43,8 @@
         <entry file="file://$PROJECT_DIR$/docs/DETAIL001.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="119">
-                <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="31" />
+              <first_editor relative-caret-position="578">
+                <caret line="34" column="9" lean-forward="false" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="9" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -257,7 +257,7 @@
       <updated>1512098144199</updated>
       <workItem from="1512098145600" duration="3004000" />
       <workItem from="1514344694946" duration="914000" />
-      <workItem from="1515653429551" duration="867000" />
+      <workItem from="1515653429551" duration="1132000" />
     </task>
     <task id="LOCAL-00001" summary="rtmp-republishing_big.png">
       <created>1512098628963</created>
@@ -301,11 +301,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515654066527</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="摄像机、手机、无人机、编码器、4G背包等多种信号源开启直播">
+      <created>1515654300544</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1515654300544</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4785000" />
+    <option name="totallyTimeSpent" value="5050000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
@@ -342,7 +349,8 @@
     <MESSAGE value="rtmp-republishing_big.png" />
     <MESSAGE value="HLS、MPEG-DASH" />
     <MESSAGE value="典型业务场景" />
-    <option name="LAST_COMMIT_MESSAGE" value="典型业务场景" />
+    <MESSAGE value="摄像机、手机、无人机、编码器、4G背包等多种信号源开启直播" />
+    <option name="LAST_COMMIT_MESSAGE" value="摄像机、手机、无人机、编码器、4G背包等多种信号源开启直播" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -445,8 +453,8 @@
     <entry file="file://$PROJECT_DIR$/docs/DETAIL001.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="119">
-            <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="31" />
+          <first_editor relative-caret-position="578">
+            <caret line="34" column="9" lean-forward="false" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="9" />
             <folding />
           </first_editor>
           <second_editor />
