@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/README.md" line="59" />
+    <bookmark url="file://$PROJECT_DIR$/README.md" line="60" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0e88733-551f-47aa-974d-d22db2ef7012" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/DETAIL001.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/scene-image1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/scene-image2.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
@@ -18,21 +21,34 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="612">
-                <caret line="340" column="7" lean-forward="true" selection-start-line="340" selection-start-column="7" selection-end-line="340" selection-end-column="7" />
+              <first_editor relative-caret-position="34">
+                <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
                 <folding>
-                  <marker date="1514344924901" expanded="true" signature="3899:4011" ph="..." />
-                  <marker date="1514344924901" expanded="true" signature="3919:3995" ph="{...}" />
-                  <marker date="1514344924901" expanded="true" signature="4025:4178" ph="..." />
-                  <marker date="1514344924901" expanded="true" signature="4129:4163" ph="..." />
-                  <marker date="1514344924901" expanded="true" signature="8927:9019" ph="..." />
-                  <marker date="1514344924901" expanded="true" signature="8943:9007" ph="{...}" />
-                  <marker date="1514344924901" expanded="true" signature="9029:9142" ph="..." />
+                  <marker date="1515653681024" expanded="true" signature="3932:4044" ph="..." />
+                  <marker date="1515653681024" expanded="true" signature="3952:4028" ph="{...}" />
+                  <marker date="1515653681024" expanded="true" signature="4058:4211" ph="..." />
+                  <marker date="1515653681024" expanded="true" signature="4162:4196" ph="..." />
+                  <marker date="1515653681024" expanded="true" signature="8960:9052" ph="..." />
+                  <marker date="1515653681024" expanded="true" signature="8976:9040" ph="{...}" />
+                  <marker date="1515653681024" expanded="true" signature="9062:9175" ph="..." />
                 </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DETAIL001.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/DETAIL001.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="696">
+                <caret line="73" column="5" lean-forward="false" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+                <folding />
               </first_editor>
               <second_editor />
             </state>
@@ -48,6 +64,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/docs/DETAIL001.md" />
       </list>
     </option>
   </component>
@@ -79,6 +96,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -102,13 +120,30 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="image" />
+              <option name="myItemId" value="docs" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NGINX-RTMP-TS-DASH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NGINX-RTMP-TS-DASH" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docs" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -117,6 +152,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wamp64\www\NGINX-RTMP-TS-DASH\docs\images" />
       <recent name="D:\wamp64\www\NGINX-RTMP-TS-DASH\image" />
     </key>
   </component>
@@ -223,7 +259,8 @@
       <option name="presentableId" value="Default" />
       <updated>1512098144199</updated>
       <workItem from="1512098145600" duration="3004000" />
-      <workItem from="1514344694946" duration="250000" />
+      <workItem from="1514344694946" duration="914000" />
+      <workItem from="1515653429551" duration="621000" />
     </task>
     <task id="LOCAL-00001" summary="rtmp-republishing_big.png">
       <created>1512098628963</created>
@@ -253,26 +290,33 @@
       <option name="project" value="LOCAL" />
       <updated>1512099340935</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="HLS、MPEG-DASH">
+      <created>1514344950259</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1514344950259</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3254000" />
+    <option name="totallyTimeSpent" value="4539000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13006397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13113007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -306,13 +350,32 @@
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
             <folding>
-              <marker date="1514344924901" expanded="true" signature="3899:4011" ph="..." />
-              <marker date="1514344924901" expanded="true" signature="3919:3995" ph="{...}" />
-              <marker date="1514344924901" expanded="true" signature="4025:4178" ph="..." />
-              <marker date="1514344924901" expanded="true" signature="4129:4163" ph="..." />
-              <marker date="1514344924901" expanded="true" signature="8927:9019" ph="..." />
-              <marker date="1514344924901" expanded="true" signature="8943:9007" ph="{...}" />
-              <marker date="1514344924901" expanded="true" signature="9029:9142" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="3932:4044" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="3952:4028" ph="{...}" />
+              <marker date="1515653681024" expanded="true" signature="4058:4211" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="4162:4196" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="8960:9052" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="8976:9040" ph="{...}" />
+              <marker date="1515653681024" expanded="true" signature="9062:9175" ph="..." />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding>
+              <marker date="1515653681024" expanded="true" signature="3932:4044" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="3952:4028" ph="{...}" />
+              <marker date="1515653681024" expanded="true" signature="4058:4211" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="4162:4196" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="8960:9052" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="8976:9040" ph="{...}" />
+              <marker date="1515653681024" expanded="true" signature="9062:9175" ph="..." />
             </folding>
           </first_editor>
           <second_editor />
@@ -342,17 +405,44 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="612">
-            <caret line="340" column="7" lean-forward="true" selection-start-line="340" selection-start-column="7" selection-end-line="340" selection-end-column="7" />
+          <first_editor relative-caret-position="34">
+            <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
             <folding>
-              <marker date="1514344924901" expanded="true" signature="3899:4011" ph="..." />
-              <marker date="1514344924901" expanded="true" signature="3919:3995" ph="{...}" />
-              <marker date="1514344924901" expanded="true" signature="4025:4178" ph="..." />
-              <marker date="1514344924901" expanded="true" signature="4129:4163" ph="..." />
-              <marker date="1514344924901" expanded="true" signature="8927:9019" ph="..." />
-              <marker date="1514344924901" expanded="true" signature="8943:9007" ph="{...}" />
-              <marker date="1514344924901" expanded="true" signature="9029:9142" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="3932:4044" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="3952:4028" ph="{...}" />
+              <marker date="1515653681024" expanded="true" signature="4058:4211" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="4162:4196" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="8960:9052" ph="..." />
+              <marker date="1515653681024" expanded="true" signature="8976:9040" ph="{...}" />
+              <marker date="1515653681024" expanded="true" signature="9062:9175" ph="..." />
             </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/images/scene-image1.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/images/scene-image2.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/DETAIL001.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="696">
+            <caret line="73" column="5" lean-forward="false" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
