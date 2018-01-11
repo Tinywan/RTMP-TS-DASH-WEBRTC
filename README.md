@@ -1,6 +1,7 @@
 # NGINX MPEG-TS Live Module & Dash JS
 ## 目录
 * [典型业务场景](/docs/DETAIL001.md)  
+* [解决方案架构](/docs/DETAIL002.md)  
 * 直播流程  
 * 流媒体直播功能   
 * WEB 直播技术  
