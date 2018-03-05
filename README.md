@@ -66,14 +66,14 @@
 
         ```bash
         git clone https://github.com/arut/nginx-ts-module.git
-        ```          
+        ```
 
     +   3、ffmpeg 下载安装
-    
+
 +   动态编译安装
 
     +   1、Openresty环境配置
-    
+
         ```bash
         apt-get install libreadline-dev libncurses5-dev libpcre3-dev \
         libssl-dev perl make build-essential
@@ -95,36 +95,36 @@
             ```bash
             # vim /opt/openresty/nginx/conf/nginx.conf
             error_log  logs/error.log;
-            
+
             pid        logs/nginx.pid;
-            
+
             load_module "/opt/openresty/nginx/modules/ngx_http_ts_module.so"; # 加载模块
-            
+
             events {
             }
-            
+
             http {
                 server {
                     listen 8000;
-            
+
                     location / {
                         root html;
                     }
-            
+
                     location /publish/ {
                         ts;
                         ts_hls path=/var/media/hls segment=10s;
                         ts_dash path=/var/media/dash segment=10s;
-            
+
                         client_max_body_size 0;
                     }
-            
+
                     location /play/ {
                         add_header Cache-Control no-cache;
                         add_header 'Access-Control-Allow-Origin' '*' always;
                         add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
                         add_header 'Access-Control-Allow-Headers' 'Range';
-            
+
                         types {
                             application/x-mpegURL m3u8;
                             application/dash+xml mpd;
@@ -137,13 +137,13 @@
             }
             ```
         +   流媒体存放文件夹建立
-        
-			```bash
+
+          ```bash
             cd /var & makedir media
             cd media & makedir hls & makedir dash
-			```
+          ```
     +   4、FFmpeg推流
-				
+        ​		
         ```bash
         ffmpeg -re -i rtmp://live.hkstv.hk.lxdns.com/live/hks -bsf:v h264_mp4toannexb \
         -c copy -f mpegts http://127.0.0.1:8000/publish/sintel
@@ -212,9 +212,9 @@
             you need to have ldconfig in your PATH env when enabling luajit.
         ```
          > 是因为找不到命令ldconfig, 这个命令一般是在/sbin/目录下的，所以先执行`export PATH=$PATH:/sbin`
-            
+
     +   5、如果出现：`./configure: error: the HTTP XSLT module requires the libxml2/libxslt` 错误，安装以下：
-    
+
         ```bash
         sudo apt-get install libxml2 libxml2-dev libxslt-dev
         ```
@@ -336,7 +336,22 @@
     </div>
     ```
 
-+   结束    
+* 功能特点
+  支持RTMP、HTTP-FLV、HLS、HTML5等协议，面向Windows、iOS、Android等终端提供稳定流畅的视频直播、点播服务，支持微信直播和微信点播， 可部署在局域网和互联网，实现私有云和公有云应用，单设备高并发。
+  * **多屏播放** 支持Flash、HTML5播放，兼容Windows、Android、iOS、Mac等操作系统； 
+  * **转码、上传** 转码、上传一体化设计，使视频资源转码后可立即面向互联网进行发布；
+  * **嵌入、分享** 上传视频后一键生成视频地址，以供用户分享、嵌入到网站、软件系统中；
+  * **丰富接口** 提供编程语言无关化的RESTful API接口，可以很简单的进行二次开发；
+* 强大的WEB管理系统  
+  采用业界优秀的流媒体框架模式设计，服务运行轻量、高效、稳定、可靠、易维护，是移动互联网时代贴近企业点播、直播需求的一款流媒体方案，可以形成一套完整的视频直播、录播解决方案，满足用户在各种行业场景的流媒体业务需求。  
+  * 1、视频上传
+  * 2、点播管理
+  * 3、直播流管理
+  * 4、正在直播
+  * 5、分享集成
+  * 6、接口在线调试  
+* 应用场景
+  视频门户网站、会议活动现场直播、网络电视台、远程监控、在线实时课堂、 科研方向等。
 
 ## [HLS 协议标准](https://link.jianshu.com/?t=http://tools.ietf.org/html/draft-pantos-http-live-streaming)
 
