@@ -1,3 +1,1 @@
-'use strict';
-
-import vscode = require('vscode');
+alert('hello world in TypeScript!');
